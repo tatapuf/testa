@@ -1,17 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carte Tassin – Points d'intérêt</title>
-
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
-  <!-- MarkerCluster CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Carte Tassin – Points d'intérêt</title>
+<!-- Leaflet CSS -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
+<!-- MarkerCluster CSS -->
+<link href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" rel="stylesheet"/>
+<link href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" rel="stylesheet"/>
+<style>
     html, body { height: 100%; margin: 0; padding: 0; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
     #map { position: absolute; inset: 0; }
     .controls {
@@ -37,23 +36,35 @@
   </style>
 </head>
 <body>
-  <div id="map"></div>
+<div id="map"></div><button id="toggleControlsBtn" style="position:absolute;top:10px;left:10px;z-index:1100;background:white;border:1px solid #ddd;border-radius:8px;padding:6px 10px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.15);font-size:16px;" title="Afficher/Masquer les catégories">☰</button>
+<button class="locate-btn" id="locateBtn" title="Me localiser">📍</button>
+<div class="controls">
+<input id="searchInput" placeholder="Recherche par nom ou tag..." type="text"/>
+<h3>Catégories</h3>
+<div class="category-filter"></div>
+<div class="footer">Cliquez un point pour les détails. Itinéraire à pied depuis le logement.</div>
+</div>
+<!-- Leaflet JS -->
+<script crossorigin="" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- MarkerCluster JS -->
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+// Toggle controls panel
+const controlsDiv = document.querySelector('.controls');
+const toggleBtn = document.getElementById('toggleControlsBtn');
+let controlsVisible = true;
+toggleBtn.addEventListener('click', () => {
+  controlsVisible = !controlsVisible;
+  if (controlsVisible) {
+    controlsDiv.style.display = 'block';
+    toggleBtn.textContent = '×';
+  } else {
+    controlsDiv.style.display = 'none';
+    toggleBtn.textContent = '☰';
+  }
+});
+toggleBtn.textContent = '×'; // start opened
 
-  <button class="locate-btn" id="locateBtn" title="Me localiser">📍</button>
-
-  <div class="controls">
-    <input type="text" id="searchInput" placeholder="Recherche par nom ou tag..." />
-    <h3>Catégories</h3>
-    <div class="category-filter"></div>
-    <div class="footer">Cliquez un point pour les détails. Itinéraire à pied depuis le logement.</div>
-  </div>
-
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <!-- MarkerCluster JS -->
-  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-
-  <script>
   // PWA: service worker (HTTPS/HTTP)
   if ('serviceWorker' in navigator && (location.protocol === 'http:' || location.protocol === 'https:')) {
     navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
