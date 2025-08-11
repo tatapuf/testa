@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carte Tassin – Points d'intérêt</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <!-- MarkerCluster CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+
+  <style>
+    html, body { height: 100%; margin: 0; padding: 0; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+    #map { position: absolute; inset: 0; }
+    .controls {
+      position: absolute; top: 10px; left: 10px; z-index: 1000;
+      background: rgba(255,255,255,.95); border-radius: 12px; padding: 10px 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.15); max-height: 90vh; overflow: auto; width: min(82vw, 300px);
+    }
+    .controls h3 { margin: 0 0 8px; font-size: 14px; font-weight: 700; color: #333; }
+    #searchInput { width: 100%; padding: 8px 10px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px; }
+    .category-filter label { display: flex; align-items: center; gap: 8px; font-size: 13px; margin: 6px 0; }
+    .legend { display: grid; grid-template-columns: 14px 1fr; gap: 8px; align-items: center; margin-top: 8px; }
+    .color-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #444; }
+    .footer { margin-top: 10px; font-size: 12px; color: #666; }
+    .leaflet-popup-content img { max-width: 260px; width: 100%; height: auto; border-radius: 6px; }
+    .tag { display:inline-block; background:#eef7ff; color:#2563eb; border-radius:999px; padding:2px 8px; margin:2px 4px 0 0; font-size:11px; }
+    .itinerary-link { display:inline-block; margin-top:8px; padding:6px 8px; background:#e8f0fe; color:#1a73e8; text-decoration:none; border-radius:6px; font-size:12px; }
+    .locate-btn {
+      position: absolute; right: 12px; top: 12px; z-index: 1000;
+      background: white; border: 1px solid #ddd; border-radius: 8px; padding: 8px 10px; cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    }
+    @media (max-width: 640px) { .controls { width: calc(100% - 20px); } }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <button class="locate-btn" id="locateBtn" title="Me localiser">📍</button>
+
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Recherche par nom ou tag..." />
+    <h3>Catégories</h3>
+    <div class="category-filter"></div>
+    <div class="footer">Cliquez un point pour les détails. Itinéraire à pied depuis le logement.</div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <!-- MarkerCluster JS -->
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+  <script>
+  // PWA: service worker (HTTPS/HTTP)
+  if ('serviceWorker' in navigator && (location.protocol === 'http:' || location.protocol === 'https:')) {
+    navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
+  }
+
+  const START = { lat: 45.758247, lon: 4.778278 }; // Logement par défaut
+
+  const categoryColors = {
+    'Boulangerie / Pâtisserie': '#f4b183',
+    'Caviste & Épicerie fine': '#c6e0b4',
+    'Restaurant / Café': '#ffc7ce',
+    'Galerie / Musée': '#c9daf8',
+    'Patrimoine & Monument': '#d9d2e9',
+    'Parc & Nature': '#d5e8d4',
+    'Marché & Événement local': '#ffe599',
+    'Transport': '#d0e0e3',
+    'Randonnée': '#ead1dc',
+    'Logement': '#fff2cc',
+  };
+
+  const map = L.map('map', { zoomControl: true }).setView([START.lat, START.lon], 13);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OpenStreetMap & CARTO', subdomains: 'abcd', maxZoom: 19
+  }).addTo(map);
+
+  const markerCluster = L.markerClusterGroup();
+  const layerGroups = {};
+  const markers = [];
+
+  function colorDot(color) {
+    return `<span class="color-dot" style="background:${color}"></span>`;
+  }
+
+  function buildLegend(categories) {
+    const filterContainer = document.querySelector('.category-filter');
+    filterContainer.innerHTML = '';
+    categories.sort().forEach(cat => {
+      const id = 'cat-' + cat.replace(/\s+/g, '-');
+      const color = categoryColors[cat] || '#aaa';
+      const label = document.createElement('label');
+      label.innerHTML = `${colorDot(color)} <input type="checkbox" id="${id}" data-category="${cat}" checked> ${cat}`;
+      filterContainer.appendChild(label);
+    });
+    // Event handling for checkboxes
+    filterContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        const cat = cb.dataset.category;
+        const group = layerGroups[cat];
+        if (!group) return;
+        if (cb.checked) markerCluster.addLayer(group);
+        else markerCluster.removeLayer(group);
+      });
+    });
+  }
+
+  function markerIcon(color) {
+    return L.divIcon({
+      className: 'custom-marker',
+      html: `<div style="background:${color}; border:2px solid #555; width:20px; height:20px; border-radius:50%; box-shadow:0 0 3px rgba(0,0,0,.3)"></div>`,
+      iconSize: [20,20],
+      iconAnchor: [10,10]
+    });
+  }
+
+  function dayLabel(d) {
+    const mapDay = { mon:'Lun', tue:'Mar', wed:'Mer', thu:'Jeu', fri:'Ven', sat:'Sam', sun:'Dim',
+                     lun:'Lun', mar:'Mar', mer:'Mer', jeu:'Jeu', ven:'Ven', sam:'Sam', dim:'Dim' };
+    return mapDay[d] || d;
+  }
+
+  function popupHTML(poi) {
+    const img = poi.image ? `<img src="${poi.image}" alt="${poi.name}">` : '';
+    let hours = '';
+    if (poi.hours) {
+      hours += '<p><strong>Horaires :</strong><br>';
+      Object.keys(poi.hours).forEach(d => { hours += `${dayLabel(d)} : ${poi.hours[d]}<br>`; });
+      hours += '</p>';
+    }
+    const tags = (poi.tags || []).map(t => `<span class="tag">${t}</span>`).join(' ');
+    const gmaps = `https://www.google.com/maps/dir/?api=1&origin=${START.lat},${START.lon}&destination=${poi.lat},${poi.lon}&travelmode=walking`;
+    return `<div>
+      ${img}
+      <h4 style="margin:6px 0 4px 0">${poi.name}</h4>
+      <p style="margin:0 0 6px 0">${poi.description || ''}</p>
+      <p style="margin:0 0 6px 0"><strong>Adresse :</strong> ${poi.address || ''}</p>
+      ${hours}
+      <div>${tags}</div>
+      <a class="itinerary-link" href="${gmaps}" target="_blank" rel="noopener">Itinéraire depuis le logement</a>
+    </div>`;
+  }
+
+  function addPOI(poi) {
+    const color = categoryColors[poi.category] || '#aaa';
+    if (!layerGroups[poi.category]) layerGroups[poi.category] = L.layerGroup();
+    const marker = L.marker([poi.lat, poi.lon], { icon: markerIcon(color) }).bindTooltip(poi.name);
+    marker.on('click', () => marker.bindPopup(popupHTML(poi)).openPopup());
+    layerGroups[poi.category].addLayer(marker);
+    markers.push({ marker, data: poi });
+  }
+
+  function finishLayers() {
+    Object.values(layerGroups).forEach(g => markerCluster.addLayer(g));
+    map.addLayer(markerCluster);
+  }
+
+  function setupSearch() {
+    const input = document.getElementById('searchInput');
+    input.addEventListener('input', function() {
+      const q = this.value.toLowerCase().trim();
+      markers.forEach(obj => {
+        const name = (obj.data.name || '').toLowerCase();
+        const tags = (obj.data.tags || []).join(' ').toLowerCase();
+        const match = !q || name.includes(q) || tags.includes(q);
+        const el = obj.marker.getElement();
+        if (match) {
+          obj.marker.setOpacity(1);
+          if (el) el.style.filter = '';
+        } else {
+          obj.marker.setOpacity(0.25);
+          if (el) el.style.filter = 'grayscale(100%)';
+        }
+      });
+    });
+  }
+
+  // Locate me
+  document.getElementById('locateBtn').addEventListener('click', () => {
+    if (!navigator.geolocation) return alert('Géolocalisation non supportée.');
+    navigator.geolocation.getCurrentPosition((pos) => {
+      const { latitude, longitude } = pos.coords;
+      L.circle([latitude, longitude], { radius: 20 }).addTo(map);
+      map.setView([latitude, longitude], 15);
+    }, () => alert('Impossible de récupérer votre position.'));
+  });
+
+  // Load data
+  fetch('./poi_data.json')
+    .then(r => r.json())
+    .then(data => {
+      // Compute categories and build legend/filters
+      const categories = [...new Set(data.map(d => d.category))];
+      buildLegend(categories);
+      // Add markers
+      data.forEach(addPOI);
+      finishLayers();
+      setupSearch();
+    })
+    .catch(err => {
+      console.error('Erreur de chargement des données', err);
+      alert('Impossible de charger les points d\'intérêt.');
+    });
+  </script>
+</body>
+</html>

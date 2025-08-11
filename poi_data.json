@@ -1,0 +1,551 @@
+[
+  {
+    "name": "Votre Airbnb (36 Avenue de Lauterbourg)",
+    "category": "Logement",
+    "lat": 45.758247,
+    "lon": 4.778278,
+    "address": "36 Avenue de Lauterbourg, 69160 Tassin-la-Demi-Lune",
+    "description": "Logement Airbnb confortable au cœur de Tassin-la-Demi-Lune. Point de départ pour découvrir les alentours. La résidence est située dans un quartier calme proche des commerces et des transports.",
+    "hours": null,
+    "tags": [
+      "appartement",
+      "résidence",
+      "point de départ"
+    ],
+    "image": null
+  },
+  {
+    "name": "Le Boulanger de la Lune",
+    "category": "Boulangerie / Pâtisserie",
+    "lat": 45.7616698,
+    "lon": 4.7765626,
+    "address": "6 Bis Avenue Général Leclerc, 69160 Tassin-la-Demi-Lune",
+    "description": "Boulangerie de quartier réputée pour ses baguettes fraîches et viennoiseries croustillantes.",
+    "hours": {
+      "mon": "07:00-20:00",
+      "tue": "07:00-20:00",
+      "wed": "07:00-20:00",
+      "thu": "07:00-20:00",
+      "fri": "07:00-20:00",
+      "sat": "07:00-20:00",
+      "sun": "07:00-20:00"
+    },
+    "tags": [
+      "artisanale",
+      "pain frais",
+      "viennoiseries"
+    ],
+    "image": "./poi_images/bakery.jpg"
+  },
+  {
+    "name": "L'Atelier du Levain",
+    "category": "Boulangerie / Pâtisserie",
+    "lat": 45.763621,
+    "lon": 4.775728,
+    "address": "81 Avenue de la République, 69160 Tassin-la-Demi-Lune",
+    "description": "Boulangerie traditionnelle proposant pains au levain et pâtisseries maison.",
+    "hours": {
+      "mon": "fermé",
+      "tue": "07:30-19:00",
+      "wed": "07:30-19:00",
+      "thu": "07:30-19:00",
+      "fri": "07:30-19:00",
+      "sat": "07:30-19:00",
+      "sun": "fermé"
+    },
+    "tags": [
+      "levain",
+      "pâtisserie",
+      "local"
+    ],
+    "image": "./poi_images/bakery.jpg"
+  },
+  {
+    "name": "Boulangerie Pâtisserie Gusto",
+    "category": "Boulangerie / Pâtisserie",
+    "lat": 45.75843,
+    "lon": 4.775613,
+    "address": "173 Avenue Charles de Gaulle, 69160 Tassin-la-Demi-Lune",
+    "description": "Boulangerie-pâtisserie familiale servant pains, gâteaux et snacks à emporter.",
+    "hours": {
+      "mon": "07:00-20:00",
+      "tue": "07:00-20:00",
+      "wed": "07:00-20:00",
+      "thu": "07:00-20:00",
+      "fri": "07:00-20:00",
+      "sat": "07:00-20:00",
+      "sun": "07:30-19:00"
+    },
+    "tags": [
+      "pâtisserie",
+      "snacks",
+      "familial"
+    ],
+    "image": "./poi_images/bakery.jpg"
+  },
+  {
+    "name": "Nicolas Tassin",
+    "category": "Caviste & Épicerie fine",
+    "lat": 45.764092,
+    "lon": 4.780978,
+    "address": "34 Avenue de la République, 69160 Tassin-la-Demi-Lune",
+    "description": "Cave à vins proposant une large sélection de vins, champagnes et spiritueux, conseil personnalisé.",
+    "hours": {
+      "mon": "10:00-19:30",
+      "tue": "09:30-19:30",
+      "wed": "09:30-19:30",
+      "thu": "09:30-19:30",
+      "fri": "09:30-19:30",
+      "sat": "09:30-19:30",
+      "sun": "09:30-13:00"
+    },
+    "tags": [
+      "vins",
+      "spiritueux",
+      "dégustation"
+    ],
+    "image": "./poi_images/wine_shop.jpg"
+  },
+  {
+    "name": "Le Comptoir des Épicuriens",
+    "category": "Caviste & Épicerie fine",
+    "lat": 45.762288,
+    "lon": 4.777096,
+    "address": "10 Avenue Georges Clemenceau, 69160 Tassin-la-Demi-Lune",
+    "description": "Caviste convivial spécialisé en vins fins, bières artisanales et produits d'épicerie de qualité.",
+    "hours": {
+      "mon": "fermé",
+      "tue": "10:30-12:30,15:00-19:30",
+      "wed": "10:30-12:30,15:00-19:30",
+      "thu": "10:30-12:30,15:00-19:30",
+      "fri": "09:00-13:00,14:30-19:30",
+      "sat": "09:00-13:00,14:30-19:30",
+      "sun": "fermé"
+    },
+    "tags": [
+      "vins",
+      "bières artisanales",
+      "épicerie"
+    ],
+    "image": "./poi_images/wine_shop.jpg"
+  },
+  {
+    "name": "Le Patio",
+    "category": "Restaurant / Café",
+    "lat": 45.763988,
+    "lon": 4.778892,
+    "address": "54 Avenue de la République, 69160 Tassin-la-Demi-Lune",
+    "description": "Restaurant cosy avec terrasse intérieure proposant une cuisine de saison et des vins locaux.",
+    "hours": {
+      "mon": "09:00-14:30",
+      "tue": "09:00-14:30",
+      "wed": "09:00-14:30",
+      "thu": "09:00-15:00",
+      "fri": "09:00-15:00",
+      "sat": "09:00-15:00",
+      "sun": "fermé"
+    },
+    "tags": [
+      "terrasse",
+      "cuisine française",
+      "déjeuner"
+    ],
+    "image": "./poi_images/restaurant.jpg"
+  },
+  {
+    "name": "À la Belle Epoq'",
+    "category": "Restaurant / Café",
+    "lat": 45.751306,
+    "lon": 4.766628,
+    "address": "204 Avenue Charles de Gaulle, 69160 Tassin-la-Demi-Lune",
+    "description": "Café-brasserie où l'on sert petits-déjeuners et plats du jour dans une ambiance chaleureuse.",
+    "hours": {
+      "mon": "07:00-19:00",
+      "tue": "07:00-19:00",
+      "wed": "07:00-19:00",
+      "thu": "07:00-19:00",
+      "fri": "07:00-19:00",
+      "sat": "fermé",
+      "sun": "fermé"
+    },
+    "tags": [
+      "petit-déjeuner",
+      "brasserie",
+      "familial"
+    ],
+    "image": "./poi_images/restaurant.jpg"
+  },
+  {
+    "name": "Le Grand Pékín",
+    "category": "Restaurant / Café",
+    "lat": 45.767552,
+    "lon": 4.785433,
+    "address": "18 Avenue Victor Hugo, 69160 Tassin-la-Demi-Lune",
+    "description": "Restaurant asiatique avec buffet à volonté offrant spécialités chinoises et vietnamiennes.",
+    "hours": {
+      "mon": "fermé",
+      "tue": "12:00-14:00,19:00-22:00",
+      "wed": "12:00-14:00,19:00-22:00",
+      "thu": "12:00-14:00,19:00-22:00",
+      "fri": "12:00-14:00,19:00-22:00",
+      "sat": "12:00-14:00,19:00-22:00",
+      "sun": "12:00-14:00"
+    },
+    "tags": [
+      "buffet",
+      "asiatique",
+      "familial"
+    ],
+    "image": "./poi_images/restaurant.jpg"
+  },
+  {
+    "name": "Espace Culturel L'Atrium",
+    "category": "Galerie / Musée",
+    "lat": 45.760343,
+    "lon": 4.771071,
+    "address": "35 Avenue du 8 Mai 1945, 69160 Tassin-la-Demi-Lune",
+    "description": "Centre culturel aménagé dans une ancienne ferme, avec auditorium, galerie d'expositions et spectacles.",
+    "hours": {
+      "mon": "fermé",
+      "tue": "fermé",
+      "wed": "14:00-18:00",
+      "thu": "14:00-18:00",
+      "fri": "14:00-18:00",
+      "sat": "10:00-13:00",
+      "sun": "fermé"
+    },
+    "tags": [
+      "expositions",
+      "spectacles",
+      "culture"
+    ],
+    "image": "./poi_images/gallery.jpg"
+  },
+  {
+    "name": "Horloge de Tassin",
+    "category": "Patrimoine & Monument",
+    "lat": 45.764011,
+    "lon": 4.781514,
+    "address": "Place Vauboin, 69160 Tassin-la-Demi-Lune",
+    "description": "Tour horloge emblématique construite en 1908, restaurée en 2007 et classée monument historique.",
+    "hours": null,
+    "tags": [
+      "monument",
+      "horloge",
+      "historique"
+    ],
+    "image": "./poi_images/clock.jpg"
+  },
+  {
+    "name": "Fort du Bruissin",
+    "category": "Patrimoine & Monument",
+    "lat": 45.732013,
+    "lon": 4.741242,
+    "address": "Chemin du Fort, 69340 Francheville",
+    "description": "Fort militaire du XIXe siècle, aujourd’hui Cité des artistes; ouvert lors de journées du patrimoine et événements (Fort en Jazz).",
+    "hours": null,
+    "tags": [
+      "fort",
+      "histoire",
+      "événement"
+    ],
+    "image": "./poi_images/clock.jpg"
+  },
+  {
+    "name": "Église Saint-Claude",
+    "category": "Patrimoine & Monument",
+    "lat": 45.760476,
+    "lon": 4.758015,
+    "address": "Place de Tassin, 69160 Tassin-la-Demi-Lune",
+    "description": "Église paroissiale traditionnelle datant du XIXe siècle; clocher élancé et vitraux colorés.",
+    "hours": null,
+    "tags": [
+      "église",
+      "culte",
+      "architecture"
+    ],
+    "image": "./poi_images/clock.jpg"
+  },
+  {
+    "name": "Église Saint-Joseph",
+    "category": "Patrimoine & Monument",
+    "lat": 45.768982,
+    "lon": 4.790469,
+    "address": "1 Rue de Montribloud, 69160 Tassin-la-Demi-Lune",
+    "description": "Église contemporaine servant de nouveau centre paroissial avec architecture moderne.",
+    "hours": null,
+    "tags": [
+      "église",
+      "moderne",
+      "culte"
+    ],
+    "image": "./poi_images/clock.jpg"
+  },
+  {
+    "name": "Parc de la Pomme",
+    "category": "Parc & Nature",
+    "lat": 45.760121,
+    "lon": 4.781874,
+    "address": "Chemin de la Pomme, 69160 Tassin-la-Demi-Lune",
+    "description": "Parc tranquille avec verger et aires de jeux; idéal pour une promenade en famille.",
+    "hours": {
+      "mon": "06:00-22:00",
+      "tue": "06:00-22:00",
+      "wed": "06:00-22:00",
+      "thu": "06:00-22:00",
+      "fri": "06:00-22:00",
+      "sat": "06:00-22:00",
+      "sun": "06:00-22:00"
+    },
+    "tags": [
+      "verger",
+      "aire de jeux",
+      "familial"
+    ],
+    "image": "./poi_images/market.jpg"
+  },
+  {
+    "name": "Parc de la Vernique",
+    "category": "Parc & Nature",
+    "lat": 45.766392,
+    "lon": 4.78361,
+    "address": "Chemin de la Vernique, 69160 Tassin-la-Demi-Lune",
+    "description": "Petit parc ombragé agrémenté d’allées et de bancs, parfait pour une pause au calme.",
+    "hours": {
+      "mon": "06:00-22:00",
+      "tue": "06:00-22:00",
+      "wed": "06:00-22:00",
+      "thu": "06:00-22:00",
+      "fri": "06:00-22:00",
+      "sat": "06:00-22:00",
+      "sun": "06:00-22:00"
+    },
+    "tags": [
+      "ombre",
+      "repos",
+      "balade"
+    ],
+    "image": "./poi_images/market.jpg"
+  },
+  {
+    "name": "Parc de l'Orangerie",
+    "category": "Parc & Nature",
+    "lat": 45.761967,
+    "lon": 4.764911,
+    "address": "Rue de Belgique, 69160 Tassin-la-Demi-Lune",
+    "description": "Parc paysager avec pelouse et arbres fruitiers; un lieu prisé pour pique-niques.",
+    "hours": {
+      "mon": "06:00-22:00",
+      "tue": "06:00-22:00",
+      "wed": "06:00-22:00",
+      "thu": "06:00-22:00",
+      "fri": "06:00-22:00",
+      "sat": "06:00-22:00",
+      "sun": "06:00-22:00"
+    },
+    "tags": [
+      "pelouse",
+      "pique-nique",
+      "nature"
+    ],
+    "image": "./poi_images/market.jpg"
+  },
+  {
+    "name": "Parc Beauséjour",
+    "category": "Parc & Nature",
+    "lat": 45.759296,
+    "lon": 4.77612,
+    "address": "163 Avenue Charles de Gaulle, 69160 Tassin-la-Demi-Lune",
+    "description": "Parc arboré avec parcours sportif et espaces de détente.",
+    "hours": {
+      "mon": "06:00-22:00",
+      "tue": "06:00-22:00",
+      "wed": "06:00-22:00",
+      "thu": "06:00-22:00",
+      "fri": "06:00-22:00",
+      "sat": "06:00-22:00",
+      "sun": "06:00-22:00"
+    },
+    "tags": [
+      "sport",
+      "détente",
+      "arbres"
+    ],
+    "image": "./poi_images/market.jpg"
+  },
+  {
+    "name": "Parc des Beaux Ombrages",
+    "category": "Parc & Nature",
+    "lat": 45.755934,
+    "lon": 4.763394,
+    "address": "Rue Professeur Depéret, 69160 Tassin-la-Demi-Lune",
+    "description": "Grand parc boisé avec parcours de santé et vastes pelouses.",
+    "hours": {
+      "mon": "06:00-22:00",
+      "tue": "06:00-22:00",
+      "wed": "06:00-22:00",
+      "thu": "06:00-22:00",
+      "fri": "06:00-22:00",
+      "sat": "06:00-22:00",
+      "sun": "06:00-22:00"
+    },
+    "tags": [
+      "boisé",
+      "parcours santé",
+      "pelouse"
+    ],
+    "image": "./poi_images/market.jpg"
+  },
+  {
+    "name": "Jardin Mermet",
+    "category": "Parc & Nature",
+    "lat": 45.758895,
+    "lon": 4.767313,
+    "address": "Rue François Mermet, 69160 Tassin-la-Demi-Lune",
+    "description": "Jardin de quartier fleuri offrant un coin de verdure et des jeux pour enfants.",
+    "hours": {
+      "mon": "06:00-22:00",
+      "tue": "06:00-22:00",
+      "wed": "06:00-22:00",
+      "thu": "06:00-22:00",
+      "fri": "06:00-22:00",
+      "sat": "06:00-22:00",
+      "sun": "06:00-22:00"
+    },
+    "tags": [
+      "jardin",
+      "fleurs",
+      "enfants"
+    ],
+    "image": "./poi_images/market.jpg"
+  },
+  {
+    "name": "Jardins de l'Hôtel de Ville",
+    "category": "Parc & Nature",
+    "lat": 45.760916,
+    "lon": 4.77758,
+    "address": "Place Hippolyte Péragut, 69160 Tassin-la-Demi-Lune",
+    "description": "Jardins publics devant l’hôtel de ville où se tient le marché hebdomadaire; jardin à la française et fontaine.",
+    "hours": {
+      "mon": "06:00-22:00",
+      "tue": "06:00-22:00",
+      "wed": "06:00-22:00",
+      "thu": "06:00-22:00",
+      "fri": "06:00-22:00",
+      "sat": "06:00-22:00",
+      "sun": "06:00-22:00"
+    },
+    "tags": [
+      "jardin à la française",
+      "fontaine",
+      "marché"
+    ],
+    "image": "./poi_images/market.jpg"
+  },
+  {
+    "name": "Square Joliot-Curie",
+    "category": "Parc & Nature",
+    "lat": 45.752709,
+    "lon": 4.772224,
+    "address": "Rue Joliot-Curie, 69160 Tassin-la-Demi-Lune",
+    "description": "Petit square de quartier avec bancs et aire de jeux pour les enfants.",
+    "hours": {
+      "mon": "06:00-22:00",
+      "tue": "06:00-22:00",
+      "wed": "06:00-22:00",
+      "thu": "06:00-22:00",
+      "fri": "06:00-22:00",
+      "sat": "06:00-22:00",
+      "sun": "06:00-22:00"
+    },
+    "tags": [
+      "square",
+      "repos",
+      "enfants"
+    ],
+    "image": "./poi_images/market.jpg"
+  },
+  {
+    "name": "Marché de Tassin",
+    "category": "Marché & Événement local",
+    "lat": 45.760916,
+    "lon": 4.77758,
+    "address": "Place Hippolyte Péragut, 69160 Tassin-la-Demi-Lune",
+    "description": "Marché hebdomadaire du vendredi matin réunissant une centaine de commerçants de produits locaux et frais.",
+    "hours": {
+      "mon": "fermé",
+      "tue": "fermé",
+      "wed": "fermé",
+      "thu": "fermé",
+      "fri": "08:00-13:00",
+      "sat": "fermé",
+      "sun": "fermé"
+    },
+    "tags": [
+      "marché",
+      "produits locaux",
+      "vendredi"
+    ],
+    "image": "./poi_images/market.jpg"
+  },
+  {
+    "name": "Gare de Tassin",
+    "category": "Transport",
+    "lat": 45.761667,
+    "lon": 4.758611,
+    "address": "Allée des Tilleuls / Avenue Paul Doumer, 69160 Tassin-la-Demi-Lune",
+    "description": "Gare SNCF desservie par les lignes TER Lyon-Saint-Étienne; accès rapide au centre de Lyon en 8 minutes.",
+    "hours": null,
+    "tags": [
+      "train",
+      "TER",
+      "transport"
+    ],
+    "image": "./poi_images/train.jpg"
+  },
+  {
+    "name": "Gare d'Écully–La Demi-Lune",
+    "category": "Transport",
+    "lat": 45.765556,
+    "lon": 4.778611,
+    "address": "Place de la Gare, 69160 Tassin-la-Demi-Lune",
+    "description": "Gare SNCF commune aux communes d’Écully et Tassin; dessert les lignes TER vers Lozanne et Lyon.",
+    "hours": null,
+    "tags": [
+      "train",
+      "TER",
+      "transport"
+    ],
+    "image": "./poi_images/train.jpg"
+  },
+  {
+    "name": "Sentier de l'Aqueduc de la Brévenne",
+    "category": "Randonnée",
+    "lat": 45.763,
+    "lon": 4.772,
+    "address": "Départ proche de la Place de Tassin",
+    "description": "Balade le long des vestiges de l'aqueduc de la Brévenne reliant Tassin à Francheville; chemin ombragé passant par des bois et prairies.",
+    "hours": null,
+    "tags": [
+      "randonnée",
+      "aqueduc",
+      "nature"
+    ],
+    "image": "./poi_images/market.jpg"
+  },
+  {
+    "name": "Boucle Fort du Bruissin – Parc de la Pomme",
+    "category": "Randonnée",
+    "lat": 45.746,
+    "lon": 4.761,
+    "address": "Circuit de 5 km au départ du Parc de la Pomme",
+    "description": "Itinéraire pédestre reliant le Parc de la Pomme au Fort du Bruissin via chemins forestiers; idéal pour une demi-journée en famille.",
+    "hours": null,
+    "tags": [
+      "boucle",
+      "forêt",
+      "famille"
+    ],
+    "image": "./poi_images/market.jpg"
+  }
+]
